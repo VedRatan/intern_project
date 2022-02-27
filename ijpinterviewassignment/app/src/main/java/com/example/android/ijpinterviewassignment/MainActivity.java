@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 {
                    list.clear();
                    adapter.notifyItemRangeRemoved(0,list.size());
+
+                   createList();
+                   createRecyclerView();
                 }
 
             }

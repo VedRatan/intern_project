@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -101,11 +102,16 @@ public class seekAdapter extends RecyclerView.Adapter<seekAdapter.seekVH> {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
-                        int pos=getAdapterPosition();
-                        int prog= seekBar.getProgress();
-                        String prog1=Integer.toString(prog);
-                        listener.onSeekBarChanged(pos,prog1);
+                        if(seekBar.getProgress()!=seekBar.getMax()) {
+                            int pos = getAdapterPosition();
+                            int prog = seekBar.getProgress();
+                            String prog1 = Integer.toString(prog);
+                            listener.onSeekBarChanged(pos, prog1);
+                        }
+//                        else
+//                        {
+//                            Toast.makeText(seekAdapter.this, "minimum length is 2", Toast.LENGTH_SHORT).show();
+//                        }
 
                 }
             });
